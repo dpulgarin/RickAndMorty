@@ -10,34 +10,49 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.dpulgarin.rickandmorty.data.models.Character
+import com.dpulgarin.rickandmorty.data.models.Location
+import com.dpulgarin.rickandmorty.data.models.Origin
+import com.dpulgarin.rickandmorty.ui.screens.CharactersScreen
 import com.dpulgarin.rickandmorty.ui.theme.RickAndMortyTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            RickAndMortyTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
-                }
+            val characters = (1..10).map {
+                Character(
+                    it,
+                    "Character $it",
+                    "",
+                    listOf(),
+                    "",
+                    "",
+                    Location("", ""),
+                    Origin("", ""),
+                    "",
+                    "",
+                    "",
+                    ""
+                )
+            }
+
+            RickAndMortyApp {
+                CharactersScreen(characters = characters)
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
+fun RickAndMortyApp(content: @Composable () -> Unit) {
     RickAndMortyTheme {
-        Greeting("Android")
+        // A surface container using the 'background' color from the theme
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colors.background
+        ) {
+            content()
+        }
     }
 }
