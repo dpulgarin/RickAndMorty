@@ -16,13 +16,13 @@ fun Navigation() {
     NavHost(navController = navController, startDestination = NavItem.Characters.route) {
         composable(NavItem.Characters) {
             CharactersScreen(
-                onCharacterClick = { character ->
-                    navController.navigate(NavItem.CharacterDetail.createRoute(character.id))
+                onCharacterClick = { idLocation ->
+                    navController.navigate(NavItem.CharacterDetail.createRoute(idLocation))
                 }
             )
         }
         composable(NavItem.CharacterDetail) {
-            CharacterDetailScreen(id = it.findArg(NavArg.LocationId))
+            CharacterDetailScreen()
         }
     }
 }
@@ -37,10 +37,4 @@ fun NavGraphBuilder.composable(
     ) {
         content(it)
     }
-}
-
-inline fun <reified T> NavBackStackEntry.findArg(arg: NavArg): T {
-    val value = arguments?.get(arg.key)
-    requireNotNull(value)
-    return value as T
 }

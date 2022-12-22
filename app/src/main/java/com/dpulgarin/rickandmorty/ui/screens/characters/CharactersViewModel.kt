@@ -1,5 +1,6 @@
 package com.dpulgarin.rickandmorty.ui.screens.characters
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dpulgarin.rickandmorty.core.Resource
@@ -40,4 +41,6 @@ class CharactersViewModel @Inject constructor(
             }
         }.launchIn(viewModelScope)
     }
+
+    fun getLocationIdFromUri(uri: Uri): Int = uri.lastPathSegment?.toInt() ?: run { 0 }
 }

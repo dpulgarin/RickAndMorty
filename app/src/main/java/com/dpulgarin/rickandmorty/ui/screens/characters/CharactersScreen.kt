@@ -15,13 +15,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.dpulgarin.rickandmorty.data.models.Character
 
 @Composable
 fun CharactersScreen(
     viewModel: CharactersViewModel = hiltViewModel(),
-    onCharacterClick: (Character) -> Unit
+    onCharacterClick: (Int) -> Unit
 ) {
     val state by viewModel.state.collectAsState()
 
@@ -31,7 +32,11 @@ fun CharactersScreen(
         items(state.characters) {
             CharacterItem(
                 character = it,
-                modifier = Modifier.clickable { onCharacterClick(it) }
+                modifier = Modifier.clickable {
+                    onCharacterClick(
+                        viewModel.getLocationIdFromUri(it.location.url.toUri())
+                    )
+                }
             )
         }
     }

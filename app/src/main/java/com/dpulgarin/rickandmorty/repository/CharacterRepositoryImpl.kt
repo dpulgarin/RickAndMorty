@@ -1,6 +1,5 @@
 package com.dpulgarin.rickandmorty.repository
 
-import com.dpulgarin.rickandmorty.core.InternetCheck
 import com.dpulgarin.rickandmorty.data.local.LocalCharacterDataSource
 import com.dpulgarin.rickandmorty.data.models.Character
 import com.dpulgarin.rickandmorty.data.models.CharacterLocation
@@ -12,15 +11,16 @@ class CharacterRepositoryImpl @Inject constructor(
     private val dataSourceRemote: RemoteCharacterDatasource,
     private val dataSourceLocal: LocalCharacterDataSource
 ) : CharacterRepository {
-    override suspend fun getCharacters(): List<Character> =
-        if (InternetCheck.isNetworkAvailable()) {
+    override suspend fun getCharacters(): List<Character> {
+        return try {
             dataSourceRemote.getCharacters().characters.forEach { character ->
                 dataSourceLocal.saveCharacter(character.toCharacterEntity())
             }
             dataSourceLocal.getCharacters()
-        } else {
+        } catch (e: java.lang.Exception) {
             dataSourceLocal.getCharacters()
         }
+    }
 
     override suspend fun getCharacterLocation(locationId: Int): CharacterLocation =
         dataSourceRemote.getCharacterLocation(locationId)

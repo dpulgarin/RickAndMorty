@@ -25,5 +25,5 @@ sealed class NavItem(
 }
 
 enum class NavArg(val key: String, val navType: NavType<*>) {
-    LocationId("userId", NavType.IntType)
+    LocationId("locationId", NavType.IntType)
 }

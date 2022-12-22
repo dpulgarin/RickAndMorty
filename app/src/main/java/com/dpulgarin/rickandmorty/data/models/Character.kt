@@ -1,6 +1,7 @@
 package com.dpulgarin.rickandmorty.data.models
 
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -26,6 +27,9 @@ data class CharacterEntity (
     val id: Int = -1,
     @ColumnInfo(name="name")
     val name: String = "",
+    @ColumnInfo(name="image")
+    val image: String = "",
+    @Embedded(prefix = "location") val location: Location,
 )
 
 fun List<CharacterEntity>.toCharacterList(): List<Character> {
@@ -44,8 +48,8 @@ fun CharacterEntity.toCharacter(): Character = Character(
     "",
     listOf(),
     "",
-    "",
-    Location("", ""),
+    this.image,
+    this.location,
     Origin("", ""),
     "",
     "",
@@ -55,5 +59,7 @@ fun CharacterEntity.toCharacter(): Character = Character(
 
 fun Character.toCharacterEntity(): CharacterEntity = CharacterEntity(
     this.id,
-    this.name
+    this.name,
+    this.image,
+    this.location
 )
