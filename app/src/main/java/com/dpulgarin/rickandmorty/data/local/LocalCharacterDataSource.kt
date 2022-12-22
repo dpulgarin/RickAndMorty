@@ -3,8 +3,11 @@ package com.dpulgarin.rickandmorty.data.local
 import com.dpulgarin.rickandmorty.data.models.Character
 import com.dpulgarin.rickandmorty.data.models.CharacterEntity
 import com.dpulgarin.rickandmorty.data.models.toCharacterList
+import javax.inject.Inject
 
-class LocalCharacterDataSource(private val characterDao: CharacterDao) {
+class LocalCharacterDataSource @Inject constructor(
+    private val characterDao: CharacterDao
+) {
     suspend fun getCharacters(): List<Character> {
         return characterDao.getAllCharacters().toCharacterList()
     }

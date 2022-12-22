@@ -1,4 +1,4 @@
-package com.dpulgarin.rickandmorty.ui.screens
+package com.dpulgarin.rickandmorty.ui.screens.characters
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -7,18 +7,19 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.dpulgarin.rickandmorty.RickAndMortyApp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.dpulgarin.rickandmorty.data.models.Character
-import com.dpulgarin.rickandmorty.data.models.Location
-import com.dpulgarin.rickandmorty.data.models.Origin
 
 @Composable
-fun CharactersScreen(characters: List<Character>) {
+fun CharactersScreen(viewModel: CharactersViewModel = hiltViewModel()) {
+    val state by viewModel.state.collectAsState()
+
     LazyVerticalGrid(columns = GridCells.Adaptive(180.dp)) {
-        items(characters) {
+        items(state.characters) {
             CharacterItem(it)
         }
     }
@@ -34,30 +35,5 @@ fun CharacterItem(character: Character) {
                 text = character.name
             )
         }
-    }
-}
-
-@Preview
-@Composable
-fun CharacterScreenPreview() {
-    val characters = (1..10).map {
-        Character(
-            it,
-            "Character $it",
-            "",
-            listOf(),
-            "",
-            "",
-            Location("", ""),
-            Origin("", ""),
-            "",
-            "",
-            "",
-            ""
-        )
-    }
-
-    RickAndMortyApp {
-        CharactersScreen(characters = characters)
     }
 }

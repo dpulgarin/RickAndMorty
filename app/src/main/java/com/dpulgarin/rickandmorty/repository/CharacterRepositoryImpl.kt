@@ -4,8 +4,9 @@ import com.dpulgarin.rickandmorty.data.local.LocalCharacterDataSource
 import com.dpulgarin.rickandmorty.data.models.Character
 import com.dpulgarin.rickandmorty.data.models.toCharacterEntity
 import com.dpulgarin.rickandmorty.data.remote.RemoteCharacterDatasource
+import javax.inject.Inject
 
-class CharacterRepositoryImpl(
+class CharacterRepositoryImpl @Inject constructor(
     private val dataSourceRemote: RemoteCharacterDatasource,
     private val dataSourceLocal: LocalCharacterDataSource
 ) : CharacterRepository {
