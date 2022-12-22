@@ -5,6 +5,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Card
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -22,6 +23,10 @@ fun CharactersScreen(viewModel: CharactersViewModel = hiltViewModel()) {
         items(state.characters) {
             CharacterItem(it)
         }
+    }
+
+    if (state.loading) {
+        CircularProgressIndicator()
     }
 }
 
