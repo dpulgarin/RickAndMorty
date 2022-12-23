@@ -97,4 +97,8 @@ dependencies {
     implementation "com.google.accompanist:accompanist-pager:0.23.0"
     implementation "com.google.accompanist:accompanist-pager-indicators:0.23.0"
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.23.0"
+
+    // Coil
+    implementation "io.coil-kt:coil:$coil_version"
+    implementation "io.coil-kt:coil-compose:$coil_version"
 }

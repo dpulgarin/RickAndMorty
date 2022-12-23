@@ -30,7 +30,7 @@ class CharactersViewModel @Inject constructor(
         getCharactersUseCase().onEach { result->
             when(result) {
                 is Resource.Success -> {
-                    _state.value = CharactersState(characterDTOS = result.data)
+                    _state.value = CharactersState(characterResult = result.data)
                 }
                 is Resource.Failure -> {
                     _state.value = CharactersState(error = result.e.message)

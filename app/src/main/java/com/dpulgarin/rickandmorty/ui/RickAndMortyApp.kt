@@ -5,13 +5,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.dpulgarin.rickandmorty.ui.navigation.Navigation
+import com.dpulgarin.rickandmorty.ui.screens.components.BottomBar
 import com.google.accompanist.systemuicontroller.SystemUiController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.dpulgarin.rickandmorty.ui.theme.RickAndMortyTheme
@@ -20,13 +19,7 @@ import com.dpulgarin.rickandmorty.ui.theme.RickAndMortyTheme
 fun RickAndMortyApp() {
     RickAndMortyScreen {
         Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = {
-                        Text("Rick y Morty")
-                    },
-                )
-            }
+            bottomBar = {BottomBar()}
         ) { padding ->
             Box(modifier = Modifier.padding(padding)) {
                 Navigation()
