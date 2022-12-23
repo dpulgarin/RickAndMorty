@@ -1,4 +1,4 @@
-package com.dpulgarin.rickandmorty.ui.screens.components
+package com.dpulgarin.rickandmorty.ui.screens.characters.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -16,6 +16,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dpulgarin.rickandmorty.domain.vo.CharacterResult
+import com.dpulgarin.rickandmorty.ui.screens.common.ImageFromUrl
 
 @Composable
 fun CharacterItem(characterResult: CharacterResult, modifier: Modifier = Modifier) {

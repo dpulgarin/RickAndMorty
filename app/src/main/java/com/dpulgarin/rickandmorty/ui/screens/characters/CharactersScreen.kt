@@ -22,8 +22,8 @@ import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.dpulgarin.rickandmorty.R
-import com.dpulgarin.rickandmorty.ui.screens.components.CharacterItem
-import com.dpulgarin.rickandmorty.ui.screens.components.RickAndMortyHeader
+import com.dpulgarin.rickandmorty.ui.screens.characters.components.CharacterItem
+import com.dpulgarin.rickandmorty.ui.screens.characters.components.RickAndMortyHeader
 
 @Composable
 fun CharactersScreen(

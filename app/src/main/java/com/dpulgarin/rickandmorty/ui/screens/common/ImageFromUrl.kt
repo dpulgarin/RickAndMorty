@@ -1,4 +1,4 @@
-package com.dpulgarin.rickandmorty.ui.screens.components
+package com.dpulgarin.rickandmorty.ui.screens.common
 
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize

@@ -1,4 +1,4 @@
-package com.dpulgarin.rickandmorty.ui.screens.components
+package com.dpulgarin.rickandmorty.ui.screens.common
 
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem

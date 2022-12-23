@@ -10,7 +10,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.dpulgarin.rickandmorty.ui.navigation.Navigation
-import com.dpulgarin.rickandmorty.ui.screens.components.BottomBar
+import com.dpulgarin.rickandmorty.ui.screens.common.BottomBar
 import com.google.accompanist.systemuicontroller.SystemUiController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.dpulgarin.rickandmorty.ui.theme.RickAndMortyTheme
