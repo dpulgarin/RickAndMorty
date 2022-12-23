@@ -2,4 +2,7 @@
     <string name="app_name">RickAndMorty</string>
     <string name="characters">Personajes</string>
     <string name="location">Location</string>
+    <string name="list">Listado</string>
+    <string name="favourites">Favoritos</string>
+    <string name="profile">Perfil</string>
 </resources>
