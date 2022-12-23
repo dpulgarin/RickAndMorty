@@ -1,9 +1,10 @@
-package com.dpulgarin.rickandmorty.di
+package com.dpulgarin.rickandmorty.data.di
 
 import android.content.Context
 import androidx.room.Room
+import com.dpulgarin.rickandmorty.core.AppConstants.DATABASE_NAME
 import com.dpulgarin.rickandmorty.data.local.AppDatabase
-import com.dpulgarin.rickandmorty.data.local.CharacterDao
+import com.dpulgarin.rickandmorty.data.local.dao.CharacterDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,7 +26,7 @@ class DatabaseModule {
         return Room.databaseBuilder(
             appContext,
             AppDatabase::class.java,
-            "rickandmorty"
+            DATABASE_NAME
         ).build()
     }
 }

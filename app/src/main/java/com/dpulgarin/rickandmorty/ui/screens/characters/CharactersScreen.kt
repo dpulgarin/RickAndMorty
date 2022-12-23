@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.dpulgarin.rickandmorty.data.models.Character
+import com.dpulgarin.rickandmorty.domain.vo.CharacterResult
 
 @Composable
 fun CharactersScreen(
@@ -29,9 +29,9 @@ fun CharactersScreen(
     LazyColumn(
         modifier = Modifier.fillMaxSize()
     ) {
-        items(state.characters) {
+        items(state.characterDTOS) {
             CharacterItem(
-                character = it,
+                characterResult = it,
                 modifier = Modifier.clickable {
                     onCharacterClick(
                         viewModel.getLocationIdFromUri(it.location.url.toUri())
@@ -47,13 +47,13 @@ fun CharactersScreen(
 }
 
 @Composable
-fun CharacterItem(character: Character, modifier: Modifier = Modifier) {
+fun CharacterItem(characterResult: CharacterResult, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
     ) {
         Card {
             Text(
-                text = character.name,
+                text = characterResult.name,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp)

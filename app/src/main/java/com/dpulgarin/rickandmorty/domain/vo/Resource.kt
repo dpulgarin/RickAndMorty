@@ -1,4 +1,4 @@
-package com.dpulgarin.rickandmorty.core
+package com.dpulgarin.rickandmorty.domain.vo
 
 sealed class Resource<out T> {
     class Loading<out T>: Resource<T>()

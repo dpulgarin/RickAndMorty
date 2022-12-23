@@ -1,8 +1,8 @@
 package com.dpulgarin.rickandmorty.ui.screens.characters
-import com.dpulgarin.rickandmorty.data.models.Character
+import com.dpulgarin.rickandmorty.domain.vo.CharacterResult
 
 data class CharactersState(
     val loading: Boolean = false,
-    val characters: List<Character> = emptyList(),
+    val characterDTOS: List<CharacterResult> = emptyList(),
     val error: String? = ""
 )

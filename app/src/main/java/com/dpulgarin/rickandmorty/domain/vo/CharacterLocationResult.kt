@@ -1,11 +1,9 @@
-package com.dpulgarin.rickandmorty.data.models
+package com.dpulgarin.rickandmorty.domain.vo
 
-data class CharacterLocation(
+data class CharacterLocationResult(
     val created: String,
     val dimension: String,
-    val id: Int,
     val name: String,
     val residents: List<String>,
     val type: String,
-    val url: String
 )

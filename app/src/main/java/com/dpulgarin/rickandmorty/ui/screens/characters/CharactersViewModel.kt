@@ -3,8 +3,8 @@ package com.dpulgarin.rickandmorty.ui.screens.characters
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dpulgarin.rickandmorty.core.Resource
-import com.dpulgarin.rickandmorty.domain.GetCharactersUseCase
+import com.dpulgarin.rickandmorty.domain.vo.Resource
+import com.dpulgarin.rickandmorty.domain.usecase.GetCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -30,7 +30,7 @@ class CharactersViewModel @Inject constructor(
         getCharactersUseCase().onEach { result->
             when(result) {
                 is Resource.Success -> {
-                    _state.value = CharactersState(characters = result.data)
+                    _state.value = CharactersState(characterDTOS = result.data)
                 }
                 is Resource.Failure -> {
                     _state.value = CharactersState(error = result.e.message)

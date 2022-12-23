@@ -1,19 +1,19 @@
-package com.dpulgarin.rickandmorty.repository
+package com.dpulgarin.rickandmorty.data.repository
 
 import com.dpulgarin.rickandmorty.data.local.LocalCharacterDataSource
-import com.dpulgarin.rickandmorty.data.models.Character
-import com.dpulgarin.rickandmorty.data.models.CharacterLocation
-import com.dpulgarin.rickandmorty.data.models.toCharacterEntity
+import com.dpulgarin.rickandmorty.data.remote.dto.location.CharacterLocationDTO
+import com.dpulgarin.rickandmorty.data.remote.dto.characters.toCharacterEntity
 import com.dpulgarin.rickandmorty.data.remote.RemoteCharacterDatasource
+import com.dpulgarin.rickandmorty.domain.vo.CharacterResult
 import javax.inject.Inject
 
 class CharacterRepositoryImpl @Inject constructor(
     private val dataSourceRemote: RemoteCharacterDatasource,
     private val dataSourceLocal: LocalCharacterDataSource
 ) : CharacterRepository {
-    override suspend fun getCharacters(): List<Character> {
+    override suspend fun getCharacters(): List<CharacterResult> {
         return try {
-            dataSourceRemote.getCharacters().characters.forEach { character ->
+            dataSourceRemote.getCharacters().characterDTOS.forEach { character ->
                 dataSourceLocal.saveCharacter(character.toCharacterEntity())
             }
             dataSourceLocal.getCharacters()
@@ -22,7 +22,7 @@ class CharacterRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getCharacterLocation(locationId: Int): CharacterLocation =
+    override suspend fun getCharacterLocation(locationId: Int): CharacterLocationDTO =
         dataSourceRemote.getCharacterLocation(locationId)
 
 }

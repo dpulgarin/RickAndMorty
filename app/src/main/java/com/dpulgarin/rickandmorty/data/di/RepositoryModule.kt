@@ -1,7 +1,7 @@
-package com.dpulgarin.rickandmorty.di
+package com.dpulgarin.rickandmorty.data.di
 
-import com.dpulgarin.rickandmorty.repository.CharacterRepository
-import com.dpulgarin.rickandmorty.repository.CharacterRepositoryImpl
+import com.dpulgarin.rickandmorty.data.repository.CharacterRepository
+import com.dpulgarin.rickandmorty.data.repository.CharacterRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

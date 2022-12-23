@@ -1,7 +1,7 @@
-package com.dpulgarin.rickandmorty.di
+package com.dpulgarin.rickandmorty.data.di
 
-import com.dpulgarin.rickandmorty.application.AppConstants
-import com.dpulgarin.rickandmorty.repository.WebService
+import com.dpulgarin.rickandmorty.core.AppConstants
+import com.dpulgarin.rickandmorty.data.repository.WebService
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

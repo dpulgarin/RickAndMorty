@@ -1,14 +1,15 @@
 package com.dpulgarin.rickandmorty.data.local
 
-import com.dpulgarin.rickandmorty.data.models.Character
-import com.dpulgarin.rickandmorty.data.models.CharacterEntity
-import com.dpulgarin.rickandmorty.data.models.toCharacterList
+import com.dpulgarin.rickandmorty.data.local.dao.CharacterDao
+import com.dpulgarin.rickandmorty.data.local.db.CharacterEntity
+import com.dpulgarin.rickandmorty.data.local.db.toCharacterList
+import com.dpulgarin.rickandmorty.domain.vo.CharacterResult
 import javax.inject.Inject
 
 class LocalCharacterDataSource @Inject constructor(
     private val characterDao: CharacterDao
 ) {
-    suspend fun getCharacters(): List<Character> {
+    suspend fun getCharacters(): List<CharacterResult> {
         return characterDao.getAllCharacters().toCharacterList()
     }
 

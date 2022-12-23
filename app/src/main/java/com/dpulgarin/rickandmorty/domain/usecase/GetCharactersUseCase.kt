@@ -1,18 +1,18 @@
-package com.dpulgarin.rickandmorty.domain
+package com.dpulgarin.rickandmorty.domain.usecase
 
-import com.dpulgarin.rickandmorty.core.Resource
-import com.dpulgarin.rickandmorty.repository.CharacterRepository
+import com.dpulgarin.rickandmorty.domain.vo.Resource
+import com.dpulgarin.rickandmorty.data.repository.CharacterRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
-import com.dpulgarin.rickandmorty.data.models.Character
+import com.dpulgarin.rickandmorty.domain.vo.CharacterResult
 
 class GetCharactersUseCase @Inject constructor(
     private val repository: CharacterRepository
 ) {
-    operator fun invoke(): Flow<Resource<List<Character>>> = flow {
+    operator fun invoke(): Flow<Resource<List<CharacterResult>>> = flow {
         try {
             emit(Resource.Loading())
             val results = repository.getCharacters().map {

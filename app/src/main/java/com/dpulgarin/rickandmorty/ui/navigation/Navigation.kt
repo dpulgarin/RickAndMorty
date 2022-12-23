@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.dpulgarin.rickandmorty.ui.screens.characters.CharactersScreen
-import com.dpulgarin.rickandmorty.ui.screens.detail.CharacterDetailScreen
+import com.dpulgarin.rickandmorty.ui.screens.characterlocation.CharacterLocationScreen
 
 @Composable
 fun Navigation() {
@@ -17,12 +17,12 @@ fun Navigation() {
         composable(NavItem.Characters) {
             CharactersScreen(
                 onCharacterClick = { idLocation ->
-                    navController.navigate(NavItem.CharacterDetail.createRoute(idLocation))
+                    navController.navigate(NavItem.CharacterLocation.createRoute(idLocation))
                 }
             )
         }
-        composable(NavItem.CharacterDetail) {
-            CharacterDetailScreen()
+        composable(NavItem.CharacterLocation) {
+            CharacterLocationScreen()
         }
     }
 }

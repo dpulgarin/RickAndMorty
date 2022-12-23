@@ -8,7 +8,7 @@ sealed class NavItem(
     val navArgs: List<NavArg> = emptyList()
 ) {
     object Characters: NavItem("characters")
-    object CharacterDetail: NavItem("characterdetail", listOf(NavArg.LocationId)) {
+    object CharacterLocation: NavItem("characterlocation", listOf(NavArg.LocationId)) {
         fun createRoute(locationId: Int) = "$baseRoute/$locationId"
     }
 

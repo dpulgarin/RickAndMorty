@@ -1,6 +1,6 @@
-package com.dpulgarin.rickandmorty.data.models
+package com.dpulgarin.rickandmorty.data.remote.dto.characters
 
-data class Info(
+data class InfoDTO(
     val count: Int,
     val next: String,
     val pages: Int,

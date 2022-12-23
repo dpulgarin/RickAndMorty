@@ -1,10 +1,10 @@
-package com.dpulgarin.rickandmorty.ui.screens.detail
+package com.dpulgarin.rickandmorty.ui.screens.characterlocation
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dpulgarin.rickandmorty.core.Resource
-import com.dpulgarin.rickandmorty.domain.GetCharacterLocationUseCase
+import com.dpulgarin.rickandmorty.domain.vo.Resource
+import com.dpulgarin.rickandmorty.domain.usecase.GetCharacterLocationUseCase
 import com.dpulgarin.rickandmorty.ui.navigation.NavArg
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -14,11 +14,11 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 @HiltViewModel
-class CharacterDetailViewModel @Inject constructor(
+class CharacterLocationViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val getCharacterLocationUseCase: GetCharacterLocationUseCase
 ) : ViewModel() {
-    private val _state = MutableStateFlow(CharacterDetailState())
+    private val _state = MutableStateFlow(CharacterLocationState())
     val state = _state.asStateFlow()
 
     init {
@@ -31,13 +31,13 @@ class CharacterDetailViewModel @Inject constructor(
         getCharacterLocationUseCase(locationId).onEach { result->
             when(result) {
                 is Resource.Success -> {
-                    _state.value = CharacterDetailState(characterLocation = result.data)
+                    _state.value = CharacterLocationState(characterLocationResult = result.data)
                 }
                 is Resource.Failure -> {
-                    _state.value = CharacterDetailState(error = result.e.message)
+                    _state.value = CharacterLocationState(error = result.e.message)
                 }
                 is Resource.Loading -> {
-                    _state.value = CharacterDetailState(loading = true)
+                    _state.value = CharacterLocationState(loading = true)
                 }
             }
         }.launchIn(viewModelScope)

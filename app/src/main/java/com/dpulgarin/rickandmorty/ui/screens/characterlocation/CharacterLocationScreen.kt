@@ -1,4 +1,4 @@
-package com.dpulgarin.rickandmorty.ui.screens.detail
+package com.dpulgarin.rickandmorty.ui.screens.characterlocation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,17 +12,17 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun CharacterDetailScreen(
-    viewModel: CharacterDetailViewModel = hiltViewModel()
+fun CharacterLocationScreen(
+    viewModel: CharacterLocationViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
 
-    state.characterLocation?.let {
+    state.characterLocationResult?.let {
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier.fillMaxSize()
         ) {
-            Text(text = "Location:  ${state.characterLocation?.name}")
+            Text(text = "Location:  ${state.characterLocationResult?.name}")
         }
     }
 
