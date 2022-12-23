@@ -8,14 +8,16 @@ import com.dpulgarin.rickandmorty.data.remote.dto.characters.LocationDTO
 import com.dpulgarin.rickandmorty.domain.vo.CharacterResult
 
 @Entity
-data class CharacterEntity (
+data class CharacterEntity(
     @PrimaryKey
     val id: Int = -1,
-    @ColumnInfo(name="name")
+    @ColumnInfo(name = "name")
     val name: String = "",
-    @ColumnInfo(name="image")
+    @ColumnInfo(name = "image")
     val image: String = "",
     @Embedded(prefix = "location") val locationDTO: LocationDTO,
+    @ColumnInfo(name = "favourite")
+    val isFavourite: Boolean,
 )
 
 fun CharacterEntity.toCharacterResult(): CharacterResult = CharacterResult(
@@ -28,7 +30,7 @@ fun CharacterEntity.toCharacterResult(): CharacterResult = CharacterResult(
 fun List<CharacterEntity>.toCharacterList(): List<CharacterResult> {
     val resultList = mutableListOf<CharacterResult>()
 
-    this.forEach{ characterEntity ->
+    this.forEach { characterEntity ->
         resultList.add(characterEntity.toCharacterResult())
     }
 

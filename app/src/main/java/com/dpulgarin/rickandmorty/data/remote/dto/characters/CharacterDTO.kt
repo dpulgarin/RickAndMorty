@@ -20,9 +20,10 @@ data class CharacterDTO(
     val url: String
 )
 
-fun CharacterDTO.toCharacterEntity(): CharacterEntity = CharacterEntity(
+fun CharacterDTO.toCharacterEntity(isFavourite: Boolean): CharacterEntity = CharacterEntity(
     this.id,
     this.name,
     this.image,
-    this.locationDTO
+    this.locationDTO,
+    isFavourite
 )

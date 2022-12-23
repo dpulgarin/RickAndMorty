@@ -7,4 +7,5 @@ data class CharacterResult(
     val name: String = "",
     val image: String = "",
     val location: LocationDTO,
+    val isFavourite: Boolean,
 )
