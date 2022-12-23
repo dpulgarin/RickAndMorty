@@ -17,11 +17,13 @@ fun CharacterDetailScreen(
 ) {
     val state by viewModel.state.collectAsState()
 
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxSize()
-    ) {
-        Text(text = "Location:  ${state.characterLocation?.name}")
+    state.characterLocation?.let {
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Text(text = "Location:  ${state.characterLocation?.name}")
+        }
     }
 
     if (state.loading) {

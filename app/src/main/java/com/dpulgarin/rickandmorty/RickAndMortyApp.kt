@@ -29,14 +29,6 @@ fun RickAndMortyApp() {
                     title = {
                         Text("Rick y Morty")
                     },
-                    navigationIcon = {
-                        IconButton(onClick = { /*TODO*/ }) {
-                            Icon(
-                                imageVector = Icons.Default.ArrowBack,
-                                contentDescription = null
-                            )
-                        }
-                    }
                 )
             }
         ) { padding ->
