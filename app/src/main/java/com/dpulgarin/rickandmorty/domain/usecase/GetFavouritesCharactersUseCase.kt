@@ -13,6 +13,6 @@ class GetFavouritesCharactersUseCase @Inject constructor(
     private val dispatcher: DispatchersProvider
 ) {
     operator fun invoke(): Flow<List<CharacterResult>> = flow {
-        val results = repository.getFavoritesCharacters().flowOn(dispatcher.io)
+        repository.getFavoritesCharacters().flowOn(dispatcher.io)
     }
 }

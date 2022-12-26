@@ -24,7 +24,8 @@ fun CharacterEntity.toCharacterResult(): CharacterResult = CharacterResult(
     this.id,
     this.name,
     this.image,
-    this.locationDTO
+    this.locationDTO,
+    this.isFavourite
 )
 
 fun List<CharacterEntity>.toCharacterList(): List<CharacterResult> {

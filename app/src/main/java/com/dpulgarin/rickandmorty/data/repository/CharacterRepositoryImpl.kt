@@ -53,4 +53,6 @@ class CharacterRepositoryImpl @Inject constructor(
     override suspend fun getCharacterLocation(locationId: Int): CharacterLocationDTO =
         dataSourceRemote.getCharacterLocation(locationId)
 
+    override suspend fun updateFavoriteCharacter(id: Int) =
+        db.updateFavoriteCharacter(id)
 }

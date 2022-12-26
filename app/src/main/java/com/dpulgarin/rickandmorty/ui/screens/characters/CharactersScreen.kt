@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -46,21 +47,26 @@ fun CharactersScreen(
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
         )
-
-        LazyRow(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-        ) {
-            items(state.characterResult) {
-                CharacterItem(
-                    characterResult = it,
-                    modifier = Modifier.clickable {
-                        onCharacterClick(
-                            viewModel.getLocationIdFromUri(it.location.url.toUri())
-                        )
-                    }
-                )
+        if (state.characterResult.isNotEmpty()) {
+            LazyRow(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(),
+                state = rememberLazyListState()
+            ) {
+                items(state.characterResult) {
+                    CharacterItem(
+                        characterResult = it,
+                        modifier = Modifier.clickable {
+                            onCharacterClick(
+                                viewModel.getLocationIdFromUri(it.location.url.toUri())
+                            )
+                        },
+                        onFavouriteClick = { id ->
+                            viewModel.setFavouriteId(id)
+                        }
+                    )
+                }
             }
         }
     }

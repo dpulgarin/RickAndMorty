@@ -8,4 +8,5 @@ interface CharacterRepository {
     suspend fun getCharacters(): List<CharacterResult>
     suspend fun getFavoritesCharacters(): Flow<List<CharacterResult>>
     suspend fun getCharacterLocation(locationId: Int): CharacterLocationDTO
+    suspend fun updateFavoriteCharacter(id: Int)
 }
